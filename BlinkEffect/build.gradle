@@ -42,7 +42,7 @@ publishing {
             }
             groupId='com.github.pitamen'
             artifactId='blink-effect'
-            version='1.0.1'
+            version='1.0.2'
         }
     }
     repositories {
