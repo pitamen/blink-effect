@@ -1,7 +1,11 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id 'maven-publish'
 }
+
+def githubProperties = new Properties()
+githubProperties.load(new FileInputStream(rootProject.file("github.properties")))
 
 android {
     namespace 'com.dishhome.blinkeffect'
@@ -26,6 +30,30 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+}
+
+publishing {
+    publications{
+        release(MavenPublication){
+            afterEvaluate {
+                println('test')
+                from components["release"] // Use release variant explicitly after evaluation
+            }
+            groupId='com.github.pitamen'
+            artifactId='blink-effect'
+            version='1.0.1'
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/pitamen/blink-effect")
+            credentials {
+                username = "pitamen"
+                password = "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"
+            }
+        }
     }
 }
 
