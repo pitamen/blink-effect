@@ -16,13 +16,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url = uri("https://maven.pkg.github.com/pitamen/blink-effect")
-            credentials {
-                username = "pitamen"
-                password = "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"
-            }
-        }
     }
 }
 
